@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Twitter-like Page</title>
+    <title>Nostr Pets</title>
+    <script src="nostr-sdk.js"></script>
+    <script src="nostr-lib.js"></script>
     <style>
         body {
             background-color: #15202B;
@@ -20,13 +22,19 @@
         main {
             display: flex;
             flex: 1;
+            background-color: #253341; /* Reverted to the original color */
+            align-items: center;
+            justify-content: center;
         }
 
         .sidebar {
             background-color: #000;
             padding: 1em;
             display: flex;
-            flex-direction: column; /* Display the buttons vertically inside the sidebar */
+            /* Updated to arrange buttons from left to right */
+            flex-direction: row;
+            align-items: center;
+            justify-content: center; /* Center the buttons horizontally */
         }
 
         .tweet {
@@ -47,8 +55,7 @@
             color: #ffffff;
             border: none;
             padding: 1em;
-            text-align: left;
-            margin-bottom: 0.5em;
+            margin: 0 0.5em; /* Added margin on both sides of buttons */
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s;
@@ -62,6 +69,7 @@
             background-color: #192734;
             padding: 1em;
             text-align: center;
+            margin-bottom: 1em; /* Added margin below the header */
         }
 
         h1 {
@@ -73,11 +81,39 @@
             list-style-type: none;
             padding: 0;
             margin: 0;
+            margin-bottom: 1em; /* Added margin below the list */
         }
 
         li {
             display: inline-block;
             margin-right: 1em;
+        }
+
+        footer {
+            background-color: #192734;
+            padding: 1em;
+            text-align: center;
+        }
+
+        /* Updated style for the "COMING SOON!" box */
+        .coming-soon-box {
+            background-color: #253341;
+            color: #ffffff;
+            padding: 1em; /* Reduced padding for a smaller box */
+            border-radius: 8px;
+            height: 50vh; /* Set height to 50% of the viewport height */
+            width: 70%; /* Set width to 70% of the viewport width */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 2em auto; /* Added space above the box and centered horizontally */
+        }
+
+        /* Increased font size for "COMING SOON!" text */
+        .coming-soon-text {
+            font-size: 2em;
+            margin-bottom: 0.5em; /* Added margin below the text */
         }
     </style>
 </head>
@@ -90,31 +126,46 @@
             <li>Item 2</li>
             <li>Item 3</li>
         </ul>
+        <!-- Moved buttons to the header -->
+        <div class="sidebar">
+            <button class="sidebar-btn">PET CENTRAL</button>
+            <button class="sidebar-btn">EXPLORE</button>
+            <button class="sidebar-btn">BATTLEDOME</button>
+            <button class="sidebar-btn">INVENTORY</button>
+            <button class="sidebar-btn">NOSTR FEED</button>
+            <button class="sidebar-btn">MAIL</button>
+            <button class="sidebar-btn">SETTINGS</button>
+            <button id="nostrButton" class="sidebar-btn">SIGN IN</button>
+        </div>
     </header>
 
     <main>
-        <!-- Black sidebar and its content -->
-        <div class="sidebar">
-            <button class="sidebar-btn">Create A Nostr Pet</button>
-            <button class="sidebar-btn">Pet Central</button>
-            <button class="sidebar-btn">Explore</button>
-            <button class="sidebar-btn">Games</button>
-            <button class="sidebar-btn">Mail</button>
-            <button class="sidebar-btn">Shops</button>
-            <button class="sidebar-btn">Boards</button>
-            <button class="sidebar-btn">News</button>
-            <button class="sidebar-btn">Stuff</button>
-            <button class="sidebar-btn">Help</button>
-            <button class="sidebar-btn">Login</button>
-        </div>
-
-        <div class="tweet">
-            <!-- Removed tweet content -->
+        <!-- "COMING SOON!" box -->
+        <div class="coming-soon-box">
+            <p class="coming-soon-text">COMING SOON!</p>
         </div>
     </main>
 
+    <!-- Footer moved outside the main -->
     <footer>
         <!-- Removed footer content -->
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const nostrButton = document.getElementById('nostrButton');
+
+            nostrButton.addEventListener('click', async () => {
+                const isAuthenticated = await nostrLib.isAuthenticated();
+
+                if (isAuthenticated) {
+                    await nostrLib.logout();
+                    nostrButton.innerText = 'SIGN IN';
+                } else {
+                    await nostrLib.login();
+                    nostrButton.innerText = 'SIGN OUT';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
