@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Twitter-like Page</title>
+    <style>
+        body {
+            background-color: #15202B;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column; /* Added to make the main and footer sections stack vertically */
+        }
+
+        main {
+            display: flex;
+            flex: 1;
+        }
+
+        .sidebar {
+            background-color: #000;
+            padding: 1em;
+            display: flex;
+            flex-direction: column; /* Display the buttons vertically inside the sidebar */
+        }
+
+        .tweet {
+            background-color: #253341;
+            border-radius: 8px;
+            margin-left: 1em;
+            padding: 1em;
+            flex: 2;
+        }
+
+        .tweet p {
+            margin: 0;
+        }
+
+        .sidebar-btn {
+            display: block;
+            background-color: #192734;
+            color: #ffffff;
+            border: none;
+            padding: 1em;
+            text-align: left;
+            margin-bottom: 0.5em;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar-btn:hover {
+            background-color: #253341;
+        }
+
+        header {
+            background-color: #192734;
+            padding: 1em;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0; /* Remove default margin */
+        }
+
+        /* Added style for the list */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            display: inline-block;
+            margin-right: 1em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Nostr Pets</h1>
+        <!-- Added list under Dark Twitter -->
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </header>
+
+    <main>
+        <!-- Black sidebar and its content -->
+        <div class="sidebar">
+            <button class="sidebar-btn">Create A Nostr Pet</button>
+            <button class="sidebar-btn">Pet Central</button>
+            <button class="sidebar-btn">Explore</button>
+            <button class="sidebar-btn">Games</button>
+            <button class="sidebar-btn">Mail</button>
+            <button class="sidebar-btn">Shops</button>
+            <button class="sidebar-btn">Boards</button>
+            <button class="sidebar-btn">News</button>
+            <button class="sidebar-btn">Stuff</button>
+            <button class="sidebar-btn">Help</button>
+            <button class="sidebar-btn">Login</button>
+        </div>
+
+        <div class="tweet">
+            <!-- Removed tweet content -->
+        </div>
+    </main>
+
+    <footer>
+        <!-- Removed footer content -->
+    </footer>
+</body>
+</html>
