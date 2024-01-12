@@ -8,7 +8,7 @@
     <script src="nostr-sdk.js"></script>
     <script src="nostr-lib.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap">
-    
+
     <style>
         body {
             background-color: #15202B;
@@ -19,13 +19,13 @@
             box-sizing: border-box;
             display: flex;
             min-height: 100vh;
-            flex-direction: column; /* Added to make the main and footer sections stack vertically */
+            flex-direction: column;
         }
 
         main {
             display: flex;
             flex: 1;
-            background-color: #253341; /* Reverted to the original color */
+            background-color: #253341;
             align-items: center;
             justify-content: center;
         }
@@ -34,10 +34,9 @@
             background-color: #000;
             padding: 1em;
             display: flex;
-            /* Updated to arrange buttons from left to right */
             flex-direction: row;
             align-items: center;
-            justify-content: center; /* Center the buttons horizontally */
+            justify-content: center;
         }
 
         .tweet {
@@ -58,7 +57,7 @@
             color: #ffffff;
             border: none;
             padding: 1em;
-            margin: 0 0.5em; /* Added margin on both sides of buttons */
+            margin: 0 0.5em;
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s;
@@ -72,19 +71,18 @@
             background-color: #192734;
             padding: 1em;
             text-align: center;
-            margin-bottom: 1em; /* Added margin below the header */
+            margin-bottom: 1em;
         }
 
         h1 {
-            margin: 0; /* Remove default margin */
+            margin: 0;
         }
 
-        /* Added style for the list */
         ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
-            margin-bottom: 1em; /* Added margin below the list */
+            margin-bottom: 1em;
         }
 
         li {
@@ -98,28 +96,25 @@
             text-align: center;
         }
 
-        /* Updated style for the "COMING SOON!" box */
         .coming-soon-box {
             background-color: #253341;
             color: #ffffff;
-            padding: 1em; /* Reduced padding for a smaller box */
+            padding: 1em;
             border-radius: 8px;
-            height: 50vh; /* Set height to 50% of the viewport height */
-            width: 70%; /* Set width to 70% of the viewport width */
+            height: 50vh;
+            width: 70%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin: 2em auto; /* Added space above the box and centered horizontally */
+            margin: 2em auto;
         }
 
-        /* Increased font size for "COMING SOON!" text */
         .coming-soon-text {
             font-size: 2em;
-            margin-bottom: 0.5em; /* Added margin below the text */
+            margin-bottom: 0.5em;
         }
 
-        /* Added style for the "SIGN IN" button */
         #nostrButton {
             display: block;
             background-color: #192734;
@@ -136,17 +131,13 @@
             background-color: #253341;
         }
 
-        /* style for the "Icons" */
-
-        /* style for the rest of "Icons" */ 
         .rounded-square {
             width: 50px;
             height: 50px;
             background-color: #3498db;
-            border-radius: 10px; /* Adjust the value to control the roundness */
+            border-radius: 10px;
         }
 
-        /* Added styles for the Settings */
         .modal {
             display: none;
             position: fixed;
@@ -154,7 +145,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            background: rgba(0, 0, 0, 0.5);
             justify-content: center;
             align-items: center;
             z-index: 1;
@@ -171,7 +162,16 @@
         .modal-options {
             margin-top: 1em;
         }
-        
+
+        /* Added style for links */
+        a {
+            color: #800080;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #a000a0;
+        }
     </style>
 </head>
 
@@ -192,15 +192,13 @@
     </header>
 
     <main id="mainContent">
-        <!-- Content will be dynamically loaded here -->
         <div class="coming-soon-box">
-            <p class="coming-soon-text">COMING SOON!</p>
-            <p>Hopfully? I'm very limited on knowledge! If you like to contribute, please message me on nostr!</p>
-            <p>Find me at Craig@torontoplebs.ca</p>
+            <p class="coming-soon-text"><strong>COMING SOON?</strong></p>
+            <p>Hopfully? If you'd like to contribute, please message me on Nostr!</p>
+            <p>Find me at <a href="https://nostree.me/Craig@torontoplebs.ca" target="_blank">Craig@torontoplebs.ca</a></p>
         </div>
     </main>
 
-    <!-- Added modal HTML structure -->
     <div id="settingsModal" class="modal">
         <div class="modal-content">
             <h2>SETTINGS</h2>
@@ -208,7 +206,6 @@
                 <p>Option 1</p>
                 <p>Option 2</p>
                 <p>Option 3</p>
-                <!-- Add more options as needed -->
             </div>
             <button onclick="hideSettingsModal()">Close</button>
         </div>
@@ -241,13 +238,11 @@
             document.getElementById('mainContent').innerHTML = content;
         }
 
-        // Function to show the settings modal
         function showSettingsModal() {
             const settingsModal = document.getElementById('settingsModal');
             settingsModal.style.display = 'flex';
         }
 
-        // Function to hide the settings modal
         function hideSettingsModal() {
             const settingsModal = document.getElementById('settingsModal');
             settingsModal.style.display = 'none';
