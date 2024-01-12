@@ -42,8 +42,15 @@
             margin-right: auto;
         }
 
-        .sidebar {
+        .sidebar-container {
             background-color: #000;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .sidebar {
             padding: 1em;
             display: flex;
             flex-direction: row;
@@ -169,6 +176,23 @@
         a:hover {
             color: #a000a0;
         }
+
+        .color-grid {
+            display: flex;
+            gap: 10px;
+        }
+
+        .color-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .color-circle:hover {
+            transform: scale(1.2);
+        }
     </style>
 </head>
 
@@ -186,16 +210,18 @@
         </div>
     </main>
 
-    <div class="sidebar">
-        <button class="sidebar-btn" onclick="loadContent('profile.html')"><center><div class="rounded-square"></div> PROFILE</center></button>
-        <button class="sidebar-btn" onclick="loadContent('petcentral.html')">PET CENTRAL</button>
-        <button class="sidebar-btn" onclick="loadContent('explore.html')">EXPLORE</button>
-        <button class="sidebar-btn" onclick="loadContent('battledome.html')">BATTLEDOME</button>
-        <button class="sidebar-btn" onclick="loadContent('inventory.html')">INVENTORY</button>
-        <button class="sidebar-btn" onclick="loadContent('nostrfeed.html')">NOSTR FEED</button>
-        <button class="sidebar-btn" onclick="loadContent('mail.html')">MAIL</button>
-        <button class="sidebar-btn" onclick="showSettingsModal()">SETTINGS</button>
-        <button id="nostrButton" class="sidebar-btn">SIGN IN</button>
+    <div class="sidebar-container">
+        <div class="sidebar">
+            <button class="sidebar-btn" onclick="loadContent('profile.html')"><center><div class="rounded-square"></div> PROFILE</center></button>
+            <button class="sidebar-btn" onclick="loadContent('petcentral.html')">PET CENTRAL</button>
+            <button class="sidebar-btn" onclick="loadContent('explore.html')">EXPLORE</button>
+            <button class="sidebar-btn" onclick="loadContent('battledome.html')">BATTLEDOME</button>
+            <button class="sidebar-btn" onclick="loadContent('inventory.html')">INVENTORY</button>
+            <button class="sidebar-btn" onclick="loadContent('nostrfeed.html')">NOSTR FEED</button>
+            <button class="sidebar-btn" onclick="loadContent('mail.html')">MAIL</button>
+            <button class="sidebar-btn" onclick="showSettingsModal()">SETTINGS</button>
+            <button id="nostrButton" class="sidebar-btn">SIGN IN</button>
+        </div>
     </div>
 
     <div id="settingsModal" class="modal">
@@ -275,9 +301,13 @@
 
             const header = document.querySelector('header');
             const main = document.getElementById('mainContent');
+            const comingSoonBox = document.querySelector('.coming-soon-box');
+            const sidebarContainer = document.querySelector('.sidebar-container');
 
             header.style.backgroundColor = darkenColor(color, 10);
             main.style.backgroundColor = darkenColor(color, 20);
+            comingSoonBox.style.backgroundColor = color;
+            sidebarContainer.style.backgroundColor = color;
         }
 
         function getContrastColor(hexColor) {
