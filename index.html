@@ -139,14 +139,38 @@
         /* style for the "Icons" */
 
         /* style for the rest of "Icons" */ 
-.rounded-square {
-      width: 50px;
-      height: 50px;
-      background-color: #3498db;
-      border-radius: 10px; /* Adjust the value to control the roundness */
-    }
+        .rounded-square {
+            width: 50px;
+            height: 50px;
+            background-color: #3498db;
+            border-radius: 10px; /* Adjust the value to control the roundness */
+        }
 
-        
+        /* Added styles for the Settings */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .modal-content {
+            background-color: #253341;
+            color: #ffffff;
+            padding: 2em;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .modal-options {
+            margin-top: 1em;
+        }
         
     </style>
 </head>
@@ -155,14 +179,14 @@
     <header>
         <h1>Nostr Pets</h1>
         <div class="sidebar">
-         <button class="sidebar-btn" onclick="loadContent('profile.html')"><center><div class="rounded-square"></div> PROFILE</center></button>
+            <button class="sidebar-btn" onclick="loadContent('profile.html')"><center><div class="rounded-square"></div> PROFILE</center></button>
             <button class="sidebar-btn" onclick="loadContent('petcentral.html')">PET CENTRAL</button>
             <button class="sidebar-btn" onclick="loadContent('explore.html')">EXPLORE</button>
             <button class="sidebar-btn" onclick="loadContent('battledome.html')">BATTLEDOME</button>
             <button class="sidebar-btn" onclick="loadContent('inventory.html')">INVENTORY</button>
             <button class="sidebar-btn" onclick="loadContent('nostrfeed.html')">NOSTR FEED</button>
             <button class="sidebar-btn" onclick="loadContent('mail.html')">MAIL</button>
-            <button class="sidebar-btn">SETTINGS</button>
+            <button class="sidebar-btn" onclick="showSettingsModal()">SETTINGS</button>
             <button id="nostrButton" class="sidebar-btn">SIGN IN</button>
         </div>
     </header>
@@ -173,6 +197,20 @@
             <p class="coming-soon-text">COMING SOON!</p>
         </div>
     </main>
+
+    <!-- Added modal HTML structure -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <h2>SETTINGS</h2>
+            <div class="modal-options">
+                <p>Option 1</p>
+                <p>Option 2</p>
+                <p>Option 3</p>
+                <!-- Add more options as needed -->
+            </div>
+            <button onclick="hideSettingsModal()">Close</button>
+        </div>
+    </div>
 
     <footer>
         <!-- Removed footer content -->
@@ -199,6 +237,18 @@
             const response = await fetch(htmlFile);
             const content = await response.text();
             document.getElementById('mainContent').innerHTML = content;
+        }
+
+        // Function to show the settings modal
+        function showSettingsModal() {
+            const settingsModal = document.getElementById('settingsModal');
+            settingsModal.style.display = 'flex';
+        }
+
+        // Function to hide the settings modal
+        function hideSettingsModal() {
+            const settingsModal = document.getElementById('settingsModal');
+            settingsModal.style.display = 'none';
         }
     </script>
 </body>
