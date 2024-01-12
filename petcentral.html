@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Creation Screen</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .pet-creation-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .name-section {
+            background-color: #ffe0e0;
+        }
+
+        .species-section {
+            background-color: #e0e0ff;
+            padding: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .species-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .color-section {
+            background-color: #e0ffee;
+            padding: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .color-option {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .stats-section {
+            background-color: #e0ffe0;
+            padding: 10px;
+        }
+
+        .stats-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .stats-item {
+            margin-bottom: 5px;
+        }
+
+        .roll-button {
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="pet-creation-container">
+        <div class="section name-section">
+            <div class="section-header">Name</div>
+            <input type="text" placeholder="Enter pet's name">
+        </div>
+
+        <div class="section species-section">
+            <div class="section-header">Species</div>
+            <div class="species-option" style="background-color: #ff9999;"></div> <!-- Cat -->
+            <div class="species-option" style="background-color: #9999ff;"></div> <!-- Dog -->
+            <div class="species-option" style="background-color: #ffcc66;"></div> <!-- Ostrich -->
+        </div>
+
+        <div class="section color-section">
+            <div class="section-header">Color</div>
+            <div class="color-option" style="background-color: #ff0000;"></div> <!-- Red -->
+            <div class="color-option" style="background-color: #0000ff;"></div> <!-- Blue -->
+            <div class="color-option" style="background-color: #ffff00;"></div> <!-- Yellow -->
+            <div class="color-option" style="background-color: #00ff00;"></div> <!-- Green -->
+        </div>
+
+        <div class="section stats-section">
+            <div class="section-header">Stats</div>
+            <ul class="stats-list">
+                <li class="stats-item">HP: <span id="hp">0</span></li>
+                <li class="stats-item">MANA: <span id="mana">0</span></li>
+                <li class="stats-item">ATTACK: <span id="attack">0</span></li>
+                <li class="stats-item">SPECIAL ATTACK: <span id="specialAttack">0</span></li>
+                <li class="stats-item">DEFENCE: <span id="defence">0</span></li>
+                <li class="stats-item">SPECIAL DEFENCE: <span id="specialDefence">0</span></li>
+                <li class="stats-item">SPEED: <span id="speed">0</span></li>
+            </ul>
+            <button class="roll-button" onclick="rollStats()">Roll</button>
+        </div>
+    </div>
+
+    <script>
+        function rollStats() {
+            // Generate random numbers between 1-10 for each stat
+            let hp = getRandomNumber();
+            let mana = getRandomNumber();
+            let attack = getRandomNumber();
+            let specialAttack = getRandomNumber();
+            let defence = getRandomNumber();
+            let specialDefence = getRandomNumber();
+            let speed = getRandomNumber();
+
+            // Ensure no negative numbers and set a minimum value of 1
+            hp = Math.max(1, hp);
+            mana = Math.max(1, mana);
+            attack = Math.max(1, attack);
+            specialAttack = Math.max(1, specialAttack);
+            defence = Math.max(1, defence);
+            specialDefence = Math.max(1, specialDefence);
+            speed = Math.max(1, speed);
+
+            // Calculate the difference needed to make the total equal to 30
+            const totalDifference = 30 - (hp + mana + attack + specialAttack + defence + specialDefence + speed);
+
+            // Add the difference to a random stat (to keep it random)
+            const randomStat = Math.floor(Math.random() * 7);
+            switch (randomStat) {
+                case 0:
+                    hp += totalDifference;
+                    break;
+                case 1:
+                    mana += totalDifference;
+                    break;
+                case 2:
+                    attack += totalDifference;
+                    break;
+                case 3:
+                    specialAttack += totalDifference;
+                    break;
+                case 4:
+                    defence += totalDifference;
+                    break;
+                case 5:
+                    specialDefence += totalDifference;
+                    break;
+                case 6:
+                    speed += totalDifference;
+                    break;
+            }
+
+            // Update the displayed stats
+            document.getElementById("hp").innerText = hp;
+            document.getElementById("mana").innerText = mana;
+            document.getElementById("attack").innerText = attack;
+            document.getElementById("specialAttack").innerText = specialAttack;
+            document.getElementById("defence").innerText = defence;
+            document.getElementById("specialDefence").innerText = specialDefence;
+            document.getElementById("speed").innerText = speed;
+        }
+
+        function getRandomNumber() {
+            return Math.floor(Math.random() * 10) + 1;
+        }
+    </script>
+</body>
+</html>
