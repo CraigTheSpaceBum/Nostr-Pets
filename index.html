@@ -22,12 +22,23 @@
             flex-direction: column;
         }
 
-        main {
+        header {
             display: flex;
-            flex: 1;
-            background-color: #253341;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
+            background-color: #192734;
+            padding: 1em;
+            text-align: center;
+            margin-bottom: 1em;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        #clock {
+            font-size: 1em;
+            margin-right: auto; /* Pushes the clock to the left */
         }
 
         .sidebar {
@@ -37,18 +48,6 @@
             flex-direction: row;
             align-items: center;
             justify-content: center;
-        }
-
-        .tweet {
-            background-color: #253341;
-            border-radius: 8px;
-            margin-left: 1em;
-            padding: 1em;
-            flex: 2;
-        }
-
-        .tweet p {
-            margin: 0;
         }
 
         .sidebar-btn {
@@ -67,33 +66,12 @@
             background-color: #253341;
         }
 
-        header {
-            background-color: #192734;
-            padding: 1em;
-            text-align: center;
-            margin-bottom: 1em;
-        }
-
-        h1 {
-            margin: 0;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            margin-bottom: 1em;
-        }
-
-        li {
-            display: inline-block;
-            margin-right: 1em;
-        }
-
-        footer {
-            background-color: #192734;
-            padding: 1em;
-            text-align: center;
+        main {
+            display: flex;
+            flex: 1;
+            background-color: #253341;
+            align-items: center;
+            justify-content: center;
         }
 
         .coming-soon-box {
@@ -177,27 +155,29 @@
 
 <body>
     <header>
+        <div id="clock"></div>
         <h1>Nostr Pets</h1>
-        <div class="sidebar">
-            <button class="sidebar-btn" onclick="loadContent('profile.html')"><center><div class="rounded-square"></div> PROFILE</center></button>
-            <button class="sidebar-btn" onclick="loadContent('petcentral.html')">PET CENTRAL</button>
-            <button class="sidebar-btn" onclick="loadContent('explore.html')">EXPLORE</button>
-            <button class="sidebar-btn" onclick="loadContent('battledome.html')">BATTLEDOME</button>
-            <button class="sidebar-btn" onclick="loadContent('inventory.html')">INVENTORY</button>
-            <button class="sidebar-btn" onclick="loadContent('nostrfeed.html')">NOSTR FEED</button>
-            <button class="sidebar-btn" onclick="loadContent('mail.html')">MAIL</button>
-            <button class="sidebar-btn" onclick="showSettingsModal()">SETTINGS</button>
-            <button id="nostrButton" class="sidebar-btn">SIGN IN</button>
-        </div>
     </header>
 
     <main id="mainContent">
         <div class="coming-soon-box">
             <p class="coming-soon-text"><strong>COMING SOON?</strong></p>
-            <p>Hopfully? If you'd like to contribute, please message me on Nostr!</p>
+            <p>Hopefully? If you'd like to contribute, please message me on Nostr!</p>
             <p>Find me at <a href="https://nostree.me/Craig@torontoplebs.ca" target="_blank">Craig@torontoplebs.ca</a></p>
         </div>
     </main>
+
+    <div class="sidebar">
+        <button class="sidebar-btn" onclick="loadContent('profile.html')"><center><div class="rounded-square"></div> PROFILE</center></button>
+        <button class="sidebar-btn" onclick="loadContent('petcentral.html')">PET CENTRAL</button>
+        <button class="sidebar-btn" onclick="loadContent('explore.html')">EXPLORE</button>
+        <button class="sidebar-btn" onclick="loadContent('battledome.html')">BATTLEDOME</button>
+        <button class="sidebar-btn" onclick="loadContent('inventory.html')">INVENTORY</button>
+        <button class="sidebar-btn" onclick="loadContent('nostrfeed.html')">NOSTR FEED</button>
+        <button class="sidebar-btn" onclick="loadContent('mail.html')">MAIL</button>
+        <button class="sidebar-btn" onclick="showSettingsModal()">SETTINGS</button>
+        <button id="nostrButton" class="sidebar-btn">SIGN IN</button>
+    </div>
 
     <div id="settingsModal" class="modal">
         <div class="modal-content">
@@ -230,6 +210,8 @@
                     nostrButton.innerText = 'SIGN OUT';
                 }
             });
+
+            setInterval(updateClock, 1000);
         });
 
         async function loadContent(htmlFile) {
@@ -246,6 +228,15 @@
         function hideSettingsModal() {
             const settingsModal = document.getElementById('settingsModal');
             settingsModal.style.display = 'none';
+        }
+
+        function updateClock() {
+            const clockElement = document.getElementById('clock');
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            clockElement.innerText = `${hours}:${minutes}:${seconds}`;
         }
     </script>
 </body>
