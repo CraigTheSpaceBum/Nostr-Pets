@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -115,41 +116,57 @@
             font-size: 2em;
             margin-bottom: 0.5em; /* Added margin below the text */
         }
+
+        /* Added style for the "SIGN IN" button */
+        #nostrButton {
+            display: block;
+            background-color: #192734;
+            color: #ffffff;
+            border: none;
+            padding: 1em;
+            margin: 0 0.5em;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #nostrButton:hover {
+            background-color: #253341;
+        }
     </style>
 </head>
+
 <body>
     <header>
         <h1>Nostr Pets</h1>
-        <!-- Added list under Dark Twitter -->
         <ul>
             <li>Item 1</li>
             <li>Item 2</li>
             <li>Item 3</li>
         </ul>
-        <!-- Moved buttons to the header -->
         <div class="sidebar">
-            <button class="sidebar-btn">PET CENTRAL</button>
-            <button class="sidebar-btn">EXPLORE</button>
-            <button class="sidebar-btn">BATTLEDOME</button>
-            <button class="sidebar-btn">INVENTORY</button>
-            <button class="sidebar-btn">NOSTR FEED</button>
-            <button class="sidebar-btn">MAIL</button>
+            <button class="sidebar-btn" onclick="loadContent('petcentral.html')">PET CENTRAL</button>
+            <button class="sidebar-btn" onclick="loadContent('explore.html')">EXPLORE</button>
+            <button class="sidebar-btn" onclick="loadContent('battledome.html')">BATTLEDOME</button>
+            <button class="sidebar-btn" onclick="loadContent('inventory.html')">INVENTORY</button>
+            <button class="sidebar-btn" onclick="loadContent('nostrfeed.html')">NOSTR FEED</button>
+            <button class="sidebar-btn" onclick="loadContent('mail.html')">MAIL</button>
             <button class="sidebar-btn">SETTINGS</button>
             <button id="nostrButton" class="sidebar-btn">SIGN IN</button>
         </div>
     </header>
 
-    <main>
-        <!-- "COMING SOON!" box -->
+    <main id="mainContent">
+        <!-- Content will be dynamically loaded here -->
         <div class="coming-soon-box">
             <p class="coming-soon-text">COMING SOON!</p>
         </div>
     </main>
 
-    <!-- Footer moved outside the main -->
     <footer>
         <!-- Removed footer content -->
     </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const nostrButton = document.getElementById('nostrButton');
@@ -166,6 +183,13 @@
                 }
             });
         });
+
+        async function loadContent(htmlFile) {
+            const response = await fetch(htmlFile);
+            const content = await response.text();
+            document.getElementById('mainContent').innerHTML = content;
+        }
     </script>
 </body>
+
 </html>
