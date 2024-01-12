@@ -133,18 +133,27 @@
         #nostrButton:hover {
             background-color: #253341;
         }
+
+        /* style for the "Icons" */
+
+        /* style for the rest of "Icons" */ 
+.rounded-square {
+      width: 50px;
+      height: 50px;
+      background-color: #3498db;
+      border-radius: 10px; /* Adjust the value to control the roundness */
+    }
+
+        
+        
     </style>
 </head>
 
 <body>
     <header>
         <h1>Nostr Pets</h1>
-        <ul>
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-        </ul>
         <div class="sidebar">
+         <button class="sidebar-btn" onclick="loadContent('profile.html')"><center><div class="rounded-square"></div> PROFILE</center></button>
             <button class="sidebar-btn" onclick="loadContent('petcentral.html')">PET CENTRAL</button>
             <button class="sidebar-btn" onclick="loadContent('explore.html')">EXPLORE</button>
             <button class="sidebar-btn" onclick="loadContent('battledome.html')">BATTLEDOME</button>
