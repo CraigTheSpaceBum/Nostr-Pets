@@ -31,15 +31,18 @@
             text-align: center;
             margin-bottom: 1em;
             transition: background-color 0.5s;
+            background-color: #253341; /* Set background color for the header */
         }
 
         h1 {
             margin: 0;
+            color: #ffffff; /* Set text color for 'Nostr Pets' */
         }
 
         #clock {
             font-size: 1em;
             margin-right: auto;
+            color: #ffffff; /* Set text color for the clock */
         }
 
         .sidebar-container {
@@ -81,6 +84,7 @@
             justify-content: center;
             padding: 1em;
             transition: background-color 0.5s;
+            background-color: #253341; /* Set background color for the main content area */
         }
 
         .coming-soon-box {
@@ -304,8 +308,8 @@
             const comingSoonBox = document.querySelector('.coming-soon-box');
             const sidebarContainer = document.querySelector('.sidebar-container');
 
-            header.style.backgroundColor = darkenColor(color, 10);
-            main.style.backgroundColor = darkenColor(color, 20);
+            header.style.backgroundColor = color;
+            main.style.backgroundColor = color;
             comingSoonBox.style.backgroundColor = color;
             sidebarContainer.style.backgroundColor = color;
         }
@@ -316,13 +320,6 @@
             const b = parseInt(hexColor.substring(5, 7), 16);
             const brightness = (r * 299 + g * 587 + b * 114) / 1000;
             return brightness > 128 ? '#000' : '#fff';
-        }
-
-        function darkenColor(hexColor, percent) {
-            const darkeningFactor = 1 - percent / 100;
-            return '#' + (
-                0x1000000 + Math.floor(parseInt(hexColor.substring(1), 16) * darkeningFactor)
-            ).toString(16).slice(1);
         }
     </script>
 </body>
