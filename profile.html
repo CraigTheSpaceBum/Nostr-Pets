@@ -1,3 +1,120 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySpace Clone</title>
+    <style>
+        body {
+            background-color: #15202B;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        #profile-container {
+            background-color: #253341;
+            width: 600px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #profile-picture {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        #user-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #user-info h2 {
+            margin: 0;
+            color: #ffffff;
+        }
+
+        #user-info p {
+            color: #ffffff;
+        }
+
+        #user-description {
+            line-height: 1.5;
+            color: #ffffff;
+        }
+
+        #friend-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #friend-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        #friend-list img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        #footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+<div id="profile-container">
+    <img id="profile-picture" src="https://placekitten.com/600/300" alt="Profile Picture">
+    
+    <div id="user-info">
+        <h2>John Doe</h2>
+        <p>Web Developer</p>
+    </div>
+
+    <div id="user-description">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac justo nec urna consectetur viverra.</p>
+    </div>
+
+    <h3>Friends</h3>
+    <ul id="friend-list">
+        <li>
+            <img src="https://placekitten.com/50/50" alt="Friend 1">
+            <span>Friend 1</span>
+        </li>
+        <li>
+            <img src="https://placekitten.com/50/51" alt="Friend 2">
+            <span>Friend 2</span>
+        </li>
+        <!-- Add more friends as needed -->
+    </ul>
+
+    <div id="footer">
+        <p>&copy; 2024 MySpace Clone</p>
+    </div>
+</div>
+
+</body>
+</html>
+
 
 YOUR NPUB INFO HERE
