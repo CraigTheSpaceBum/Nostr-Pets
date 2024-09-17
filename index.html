@@ -1,334 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nostr Pets</title>
-    <script src="nostr-sdk.js"></script>
-    <script src="nostr-lib.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap">
-
-    <style>
-        body {
-            background-color: #15202B;
-            color: #ffffff;
-            font-family: 'Press Start 2P', cursive;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            display: flex;
-            min-height: 100vh;
-            flex-direction: column;
-            transition: background-color 0.5s, color 0.5s;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1em;
-            text-align: center;
-            margin-bottom: 1em;
-            transition: background-color 0.5s;
-            background-color: #253341; /* Set background color for the header */
-        }
-
-        h1 {
-            margin: 0;
-            color: #ffffff; /* Set text color for 'Nostr Pets' */
-        }
-
-        #clock {
-            font-size: 1em;
-            margin-right: auto;
-            color: #ffffff; /* Set text color for the clock */
-        }
-
-        .sidebar-container {
-            background-color: #000;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            z-index: 2;
-        }
-
-        .sidebar {
-            padding: 1em;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .sidebar-btn {
-            display: block;
-            background-color: #192734;
-            color: #ffffff;
-            border: none;
-            padding: 1em;
-            margin: 0 0.5em;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .sidebar-btn:hover {
-            background-color: #253341;
-        }
-
-        main {
-            display: flex;
-            flex: 1;
-            align-items: center;
-            justify-content: center;
-            padding: 1em;
-            transition: background-color 0.5s;
-            background-color: #253341; /* Set background color for the main content area */
-        }
-
-        .coming-soon-box {
-            background-color: #253341;
-            color: #ffffff;
-            padding: 1em;
-            border-radius: 8px;
-            height: 50vh;
-            width: 70%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin: 2em auto;
-        }
-
-        .coming-soon-text {
-            font-size: 2em;
-            margin-bottom: 0.5em;
-        }
-
-        #nostrButton {
-            display: block;
-            background-color: #192734;
-            color: #ffffff;
-            border: none;
-            padding: 1em;
-            margin: 0 0.5em;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        #nostrButton:hover {
-            background-color: #253341;
-        }
-
-        .rounded-square {
-            width: 50px;
-            height: 50px;
-            background-color: #3498db;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 1;
-        }
-
-        .modal-content {
-            background-color: #253341;
-            color: #ffffff;
-            padding: 2em;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .modal-options {
-            margin-top: 1em;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .color-circle {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .color-circle:hover {
-            transform: scale(1.2);
-        }
-
-        a {
-            color: #800080;
-            text-decoration: none;
-            transition: color 0.5s;
-        }
-
-        a:hover {
-            color: #a000a0;
-        }
-
-        .color-grid {
-            display: flex;
-            gap: 10px;
-        }
-
-        .color-circle {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .color-circle:hover {
-            transform: scale(1.2);
-        }
-    </style>
+    <title>Social Media Layout - Dark Sunset</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <header>
-        <div id="clock"></div>
-        <h1>Nostr Pets</h1>
-    </header>
-
-    <main id="mainContent">
-        <div class="coming-soon-box">
-            <p class="coming-soon-text"><strong>COMING SOON?</strong></p>
-            <p>Hopefully? If you'd like to contribute, please message me on Nostr!</p>
-            <p>Find me at <a href="https://nostree.me/Craig@torontoplebs.ca" target="_blank">Craig@torontoplebs.ca</a></p>
-        </div>
-    </main>
-
-    <div class="sidebar-container">
-        <div class="sidebar">
-            <button class="sidebar-btn" onclick="loadContent('profile.html')"><center><div class="rounded-square"></div> PROFILE</center></button>
-            <button class="sidebar-btn" onclick="loadContent('petcentral.html')">PET CENTRAL</button>
-            <button class="sidebar-btn" onclick="loadContent('explore.html')">EXPLORE</button>
-            <button class="sidebar-btn" onclick="loadContent('battledome.html')">BATTLEDOME</button>
-            <button class="sidebar-btn" onclick="loadContent('inventory.html')">INVENTORY</button>
-            <button class="sidebar-btn" onclick="loadContent('nostrfeed.html')">NOSTR FEED</button>
-            <button class="sidebar-btn" onclick="loadContent('mail.html')">MAIL</button>
-            <button class="sidebar-btn" onclick="showSettingsModal()">SETTINGS</button>
-            <button id="nostrButton" class="sidebar-btn">SIGN IN</button>
-        </div>
-    </div>
-
-    <div id="settingsModal" class="modal">
-        <div class="modal-content">
-            <h2>SETTINGS</h2>
-            <div class="modal-options">
-                <p>Change client color</p>
-                <div class="color-grid">
-                    <div class="color-circle" style="background-color: #e74c3c;" onclick="changeThemeColor('#e74c3c')"></div>
-                    <div class="color-circle" style="background-color: #e67e22;" onclick="changeThemeColor('#e67e22')"></div>
-                    <div class="color-circle" style="background-color: #f1c40f;" onclick="changeThemeColor('#f1c40f')"></div>
-                    <div class="color-circle" style="background-color: #2ecc71;" onclick="changeThemeColor('#2ecc71')"></div>
-                    <div class="color-circle" style="background-color: #3498db;" onclick="changeThemeColor('#3498db')"></div>
-                    <div class="color-circle" style="background-color: #9b59b6;" onclick="changeThemeColor('#9b59b6')"></div>
-                    <div class="color-circle" style="background-color: #34495e;" onclick="changeThemeColor('#34495e')"></div>
-                    <div class="color-circle" style="background-color: #95a5a6;" onclick="changeThemeColor('#95a5a6')"></div>
-                    <div class="color-circle" style="background-color: #ecf0f1;" onclick="changeThemeColor('#ecf0f1')"></div>
+        <div class="logo">  
+            <div class="post-header">
+                <img src="https://via.placeholder.com/50" alt="Profile Picture" class="profile-pic">
+                <div class="user-info">
+                    <p class="user-name">John Doe</p>
+                    <p class="user-email">johndoe@example.com</p>
                 </div>
             </div>
-            <button onclick="hideSettingsModal()">Close</button>
         </div>
-    </div>
+        <center>
+            <div class="logo">MySocial
+                <p><input type="text" placeholder="Search..." class="search-bar"></p>
+            </div>
+        </center>
+        <div class="header-icons">
+            <div class="icon">🔔</div> <!-- Alerts -->
+            <div class="icon" onclick="loadContent('global.html')">🌍</div> <!-- Global -->
+            <div class="icon" onclick="loadContent('friends.html')">👥</div> <!-- Friends -->
+            <div class="icon" onclick="loadContent('groups.html')">👨‍👩‍👧‍👦</div> <!-- Groups -->
+            <div class="icon" onclick="loadContent('live.html')">📺</div> <!-- Live streaming -->
+            <div class="icon" onclick="loadContent('settings.html')">⚙️</div> <!-- Settings -->
+            <div class="icon" onclick="loadContent('logoutscreen.html')">🔑</div><!-- Log out -->
+        </div>
+    </header>
+
+    <!-- Dynamic content will be loaded here -->
+    <main>
+        <div id="content">Loading global content...</div> <!-- Default content -->
+    </main>
 
     <footer>
-        <!-- Removed footer content -->
+        <p>Bitcoin Price Here</p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            const nostrButton = document.getElementById('nostrButton');
-            nostrButton.addEventListener('click', async () => {
-                const isAuthenticated = await nostrLib.isAuthenticated();
-                if (isAuthenticated) {
-                    await nostrLib.logout();
-                    nostrButton.innerText = 'SIGN IN';
-                } else {
-                    await nostrLib.login();
-                    nostrButton.innerText = 'SIGN OUT';
-                }
-            });
-            setInterval(updateClock, 1000);
-        });
-
-        async function loadContent(htmlFile) {
-            const response = await fetch(htmlFile);
-            const content = await response.text();
-            document.getElementById('mainContent').innerHTML = content;
-        }
-
-        function showSettingsModal() {
-            const settingsModal = document.getElementById('settingsModal');
-            settingsModal.style.display = 'flex';
-        }
-
-        function hideSettingsModal() {
-            const settingsModal = document.getElementById('settingsModal');
-            settingsModal.style.display = 'none';
-        }
-
-function updateClock() {
-    const clockElement = document.getElementById('clock');
-    const now = new Date();
-    
-    const hours24 = now.getHours();
-    const hours12 = hours24 % 12 || 12; // Convert to 12-hour format
-    const amPm = hours24 < 12 ? 'AM' : 'PM'; // Determine AM or PM
-    
-    const hours = hours12.toString().padStart(2, '0');
-    const minutes = now.getMinutes().toString().padStart(2, '0');
-    const seconds = now.getSeconds().toString().padStart(2, '0');
-    
-    clockElement.innerText = `${hours}:${minutes}:${seconds} ${amPm}`;
-}
-
-
-        function changeThemeColor(color) {
-            document.body.style.backgroundColor = color;
-            document.body.style.color = getContrastColor(color);
-            const sidebarButtons = document.querySelectorAll('.sidebar-btn');
-            sidebarButtons.forEach(button => {
-                button.style.backgroundColor = color;
-                button.style.color = getContrastColor(color);
-            });
-
-            const header = document.querySelector('header');
-            const main = document.getElementById('mainContent');
-            const comingSoonBox = document.querySelector('.coming-soon-box');
-            const sidebarContainer = document.querySelector('.sidebar-container');
-
-            header.style.backgroundColor = color;
-            main.style.backgroundColor = color;
-            comingSoonBox.style.backgroundColor = color;
-            sidebarContainer.style.backgroundColor = color;
-        }
-
-        function getContrastColor(hexColor) {
-            const r = parseInt(hexColor.substring(1, 3), 16);
-            const g = parseInt(hexColor.substring(3, 5), 16);
-            const b = parseInt(hexColor.substring(5, 7), 16);
-            const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-            return brightness > 128 ? '#000' : '#fff';
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
-
 </html>
