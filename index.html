@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Media Layout - Dark Sunset</title>
+    <title>NotaSafeSpace</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,23 +14,16 @@
                 <div class="user-info">
                     <p class="user-name">John Doe</p>
                     <p class="user-email">johndoe@example.com</p>
+                    
                 </div>
             </div>
         </div>
-        <center>
-            <div class="logo">MySocial
+        <right>
+            <div class="logo">NotaSafeSpace
                 <p><input type="text" placeholder="Search..." class="search-bar"></p>
             </div>
-        </center>
-        <div class="header-icons">
-            <div class="icon">🔔</div> <!-- Alerts -->
-            <div class="icon" onclick="loadContent('global.html')">🌍</div> <!-- Global -->
-            <div class="icon" onclick="loadContent('friends.html')">👥</div> <!-- Friends -->
-            <div class="icon" onclick="loadContent('groups.html')">👨‍👩‍👧‍👦</div> <!-- Groups -->
-            <div class="icon" onclick="loadContent('live.html')">📺</div> <!-- Live streaming -->
-            <div class="icon" onclick="loadContent('settings.html')">⚙️</div> <!-- Settings -->
-            <div class="icon" onclick="loadContent('logoutscreen.html')">🔑</div><!-- Log out -->
-        </div>
+        </right>
+       
     </header>
 
     <!-- Dynamic content will be loaded here -->
@@ -39,7 +32,16 @@
     </main>
 
     <footer>
-        <p>Bitcoin Price Here</p>
+        <div class="header-icons">
+            <div class="icon" onclick="loadContent('logoutscreen.html')">🔑</div><!-- Log out -->
+            <div class="icon" onclick="loadContent('settings.html')">⚙️</div> <!-- Settings -->
+            <div class="icon" onclick="loadContent('live.html')">📺</div> <!-- Live streaming -->
+            <div class="icon" onclick="loadContent('groups.html')">👨‍👩‍👧‍👦</div> <!-- Groups -->
+            <div class="icon" onclick="loadContent('friends.html')">👥</div> <!-- Friends -->
+            <div class="icon" onclick="loadContent('dm.html')">📩</div> <!-- Direct Messages -->
+            <div class="icon" onclick="loadContent('global.html')">🌍</div> <!-- Global -->
+            <div class="icon">🔔</div> <!-- Alerts -->            
+        </div>
     </footer>
 
     <script src="script.js"></script>
