@@ -1,0 +1,70 @@
+/* Dark Twitter style */
+body {
+    background-color: #15202b;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.profile-header {
+    text-align: center;
+    position: relative;
+}
+
+.banner {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.profile-info {
+    position: relative;
+    top: -50px;
+}
+
+.profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid #15202b;
+}
+
+h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.bio {
+    font-size: 14px;
+    color: #8899a6;
+}
+
+.feed {
+    margin-top: 20px;
+}
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.post {
+    background-color: #192734;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.post p {
+    margin: 0;
+    font-size: 14px;
+    color: #e1e8ed;
+}
